@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- v-bind: pode ser substituido por :-->
+<div id="app">
+
+
+    <table class="table">
+        <thead class="thead-dark">
+
+        <template v-for="(imagem, index) in imagens">
+            <tr v-if="index===0">
+                <template v-for="(value,key, index) in imagem">
+
+                    <th>{{key}}</th>
+
+                </template>
+            </tr>
+            <tr>
+                <template v-for="(value,key, index) in imagem">
+
+                    <td v-if="key==='nome'">{{value}}</td>
+                    <td v-if="key==='imagem'">
+                        <img v-bind:alt="value" v-bind:src="value" width="100px">
+                    </td>
+
+                </template>
+            </tr>
+        </template>
+        </thead>
+
+    </table>
+
+    <table class="table ">
+        <thead class="thead-dark">
+
+        <template v-for="(usuario, index) in usuarios">
+            <tr v-if="index===0">
+                <template v-for="(value,key, index) in usuario">
+
+                    <th>{{key}}</th>
+
+                </template>
+            </tr>
+            <tr>
+                <template v-for="(value,key, index) in usuario">
+
+                    <td>{{value}}</td>
+
+                </template>
+            </tr>
+        </template>
+
+        </thead>
+    </table>
+
+</div>
+
+<script>
+
+    new Vue({
+
+        el: '#app',
+        data() {
+            return {
+                imagens: null,
+                usuarios: null
+            }
+        },
+        mounted() {
+            axios
+                .get('imageService.json')
+                .then(response => (this.imagens = response.data.imagens))
+
+            axios
+                .get('user.json')
+                .then(response => (this.usuarios = response.data.usuarios))
+        }
+
+
+    })
+
+</script>
+
+</body>
+</html>
