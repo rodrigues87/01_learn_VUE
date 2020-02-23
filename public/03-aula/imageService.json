@@ -1,0 +1,16 @@
+{
+  "imagens":[
+    {
+      "nome": "logo 1",
+      "imagem": "../logo.png"
+    },
+    {
+      "nome": "logo 2",
+      "imagem": "../logo2.png"
+    },
+    {
+      "nome": "logo 3",
+      "imagem": "../logo3.png"
+    }
+  ]
+}

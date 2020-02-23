@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- v-bind: pode ser substituido por :-->
+<div id="app">
+    <div v-if="textoDigitado !== ''">
+        <a v-bind:href="url">
+            <img v-bind:alt="titleImage" v-bind:src="srcImage">
+        </a>
+    </div>
+    <hr>
+    <div v-html="htmlCode"></div>
+    <label>
+        <input v-model="textoDigitado" type="text">
+        <p>Texto Digitado: {{textoDigitado}}</p>
+    </label>
+
+</div>
+
+<script>
+    new Vue({
+
+        el: '#app',
+        data: {
+            srcImage: '../../logo.png',
+            titleImage: "Logo Vue",
+            url: 'https://vue-native.io/getting-started.html',
+            htmlCode: 'Teste<br> <hr>pulando uma linha aqui<hr>',
+            textoDigitado: ''
+        },
+        methods: {
+            metodo(indice) {
+                return 'Fruta ' + this.frutas[indice]
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
