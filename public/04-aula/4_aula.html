@@ -9,8 +9,10 @@
 </head>
 <body>
 <!--BOOTSTRAP-->
+<link rel="stylesheet" href="4_aula.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 
 <!--VUE-->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,30 +20,52 @@
 <!-- v-bind: pode ser substituido por :-->
 <div id="app" class="container">
     <div class="d-flex justify-content-center h-100">
-
         <div class="card">
             <form v-on:submit.prevent="alterarNome('rodrigues')">
-                <div class="card-body">
-                    <input v-model="textoDigitado" type="text">
-                    <p>Texto Digitado: {{textoDigitado}}</p>
-                    <button type="submit" class="btn btn-warning">Chamar Altera Nome</button>
+                <div class="card">
+                    <div class="card-body">
+                        <input v-model="textoDigitado" type="text">
+                        <p>Texto Digitado: {{textoDigitado}}</p>
+                        <button type="submit" class="btn btn-warning">Chamar Altera Nome</button>
+                    </div>
                 </div>
             </form>
-        </div>
+            <div class="card">
+                <div class="card-body">
+                    <input v-model="textoDigitado2" type="text" v-on:keyup.enter="alterarNome2()">
+                    <p>Texto Digitado:</p>
+                    <ul>
+                        <li v-on:click="alerta()" v-for="item in array" style="background: white">
+                            {{item}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div v-bind:class="classParagrafo">
 
-        <div class="card">
-            <div class="card-body">
-                <input v-model="textoDigitado2" type="text" v-on:keyup.enter="alterarNome2()">
-                <p>Texto Digitado:</p>
-                <ul>
-                    <li v-on:click="alerta()" v-for="item in array" style="background: white">
-                        {{item}}
-                    </li>
-                </ul>
+                    <div class="card-body">
+                        <input @click="CorP($event.target.value)" value="red" name="cor" type="radio">vermelho
+                        <input @click="CorP($event.target.value)" value="green" name="cor" type="radio">verde
+                        <input @click="CorP($event.target.value)" value="yellow" name="cor" type="radio">amarelo
+                        <input @click="CorP($event.target.value)" value="blue" name="cor" type="radio">azul
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div ref="segundoParagrafo">
+
+                    <div class="card-body">
+                        <input @click="vermelho()" value="red" name="cor" type="radio">vermelho
+                        <input @click="verde()" value="green" name="cor" type="radio">verde
+                        <input @click="amarelo()" value="yellow" name="cor" type="radio">amarelo
+                        <input @click="azul()" value="blue" name="cor" type="radio">azul
+                        <button @click="clear">Limpar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <!--JAVASCRIPT-->

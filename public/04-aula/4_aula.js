@@ -6,7 +6,8 @@ new Vue({
     data: {
         textoDigitado: '',
         textoDigitado2: '',
-        array: []
+        array: [],
+        classParagrafo: 'vermelho'
     },
     methods: {
         alterarNome(sobrenome) {
@@ -26,6 +27,27 @@ new Vue({
                 event.target.style = "background: white"
             }
             //alert(event.target.textContent.trim());
+        },
+        CorP(cor){
+            this.classParagrafo = cor;
+        },
+        vermelho(){
+            this.$refs.segundoParagrafo.style.background="red"
+        },
+        verde(){
+            this.$refs.segundoParagrafo.style.background="green"
+        },
+        amarelo(){
+            this.$refs.segundoParagrafo.style.background="yellow"
+
+        },azul(){
+            this.$refs.segundoParagrafo.style.background="blue"
+
+        },clear(){
+            this.$refs.segundoParagrafo.style=""
+
         }
+
+
     }
 })
