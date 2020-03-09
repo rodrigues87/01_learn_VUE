@@ -5,14 +5,16 @@
       "telefone": "27 998686300",
       "email": "pedroh@pedro",
       "sobrenome": "rodrigues",
-      "idade": "24"
+      "idade": "24",
+      "sexo": "masculino"
     },
     {
       "nome": "vitor",
       "telefone": "27 998686300",
       "email": "vitor@vitor",
       "sobrenome": "nunes",
-      "idade": "26"
+      "idade": "26",
+      "sexo": "feminino"
 
     }
   ]
